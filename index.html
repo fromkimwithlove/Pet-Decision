@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Decision App</title>
+    <script src="main.js" type="module" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class='cat'>
+        <img src="images/cat.png" alt="cat Image" class="border-image" height='100' width='70'>
+    </div>
+    <div class="container">
+        <h1 class="title">Should I Get A Pet?</h1>
+
+        <p class="subtitle">Choosing a pet is exciting, but it's a long-term commitment! Consider your budget and
+            lifestyle – are you outdoorsy, or a homebody? How much space do you have? Remember, pets are a
+            long-term commitment, so choose wisely! </p>
+        <hr>
+
+        <form id="form">
+            <p class='heading'>Complete the questionaire and see what pet is right for you!</p>
+            <div class="form-container">
+
+                <div class="col-left">
+                    <label for="fname">What is your name?</label>
+                    <input id="fname" placeholder="  First Name" type="text" name="fname" maxlength="20">
+                    <span class="errorMessage"></span>
+                    <label for="timeCommitment">Time you can spend interacting with pet?</label>
+                    <input id="timeCommitment" type="number" name="timeCommitment" placeholder="  Hours per day...">
+                    <span class="errorMessage"></span>
+                    <label for="budget">What is the budget for you new pet? </label>
+                    <input id="budget" type="number" name="budget" min="0" max="300"
+                        placeholder="  Amount per month...">
+                    <span class="errorMessage"></span>
+                    <label for="livingSpace">Type of living space?</label>
+                    <select id="livingSpace" name="livingSpace">
+                        <option value="">--- choose ---</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="house">House</option>
+                    </select>
+                    <span class="errorMessage"></span>
+                </div>
+                <div class="col-right">
+                    <div id="questions-container"></div>
+                    <button type="submit">Submit to see results!</button>
+                    <span id="submitError"></span>
+                </div>
+            </div>
+        </form>
+        <hr>
+
+        <div class="results-container">
+            <h2 class="results-heading">Results</h2>
+            <div class="results-content">
+                <div class="results-links">
+                    <ul class="link-list" data-links>
+                    </ul>
+                </div>
+                <div class="output-container" data-display-container>
+                    <div class="output" data-output>Pet suggestion appears here when links are clicked.</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <p>&copy; 2021 Pet Decision App</p>
+        <p>FOR ENTERTAINMENT PURPOSES ONLY</p>
+    </footer>
+</body>
+</html>
