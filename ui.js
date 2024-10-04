@@ -1,7 +1,7 @@
 import { OUTPUT, EL } from "./global.js";
 import { petData, saveData, links, getLinks } from "./storage.js";
 
-const linksContainer = document.getElementsByClassName("link-list")[0];
+const linksContainer = document.querySelector(".results-links");
 
 const renderLinks = () => {
   if (!linksContainer) {
@@ -9,14 +9,25 @@ const renderLinks = () => {
     return;
   }
 
-  linksContainer.innerHTML = "";
+  linksContainer.innerHTML = "<h3>Your Pet Suggestions</h3>";
+  const linkList = document.createElement("ul");
+  linkList.className = "link-list";
+
   const allLinks = getLinks();
   allLinks.forEach((link) => {
     const linkElement = document.createElement("li");
-    linkElement.textContent = link.name;
-    linkElement.addEventListener("click", () => displayMessage(link.id));
-    linksContainer.appendChild(linkElement);
+    const anchorElement = document.createElement("a");
+    anchorElement.href = "#";
+    anchorElement.textContent = link.name;
+    anchorElement.addEventListener("click", (e) => {
+      e.preventDefault();
+      displayMessage(link.id);
+    });
+    linkElement.appendChild(anchorElement);
+    linkList.appendChild(linkElement);
   });
+
+  linksContainer.appendChild(linkList);
 };
 
 const displayMessage = (linkId) => {
@@ -68,7 +79,9 @@ const displayButtons = (pet, index) => {
       const radio = document.querySelectorAll(
         `input[name="question-${i}"][value="${pet.responses[i]}"]`
       );
-      radio[0].checked = true;
+      if (radio[0]) {
+        radio[0].checked = true;
+      }
     }
     petData.splice(index, 1);
     links.splice(index, 1);

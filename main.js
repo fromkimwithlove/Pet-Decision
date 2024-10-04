@@ -1,7 +1,7 @@
 import { FORM, SUBMIT_ERROR } from "./global.js";
 import { PET } from "./pet.js";
 import { questions, renderQuestions } from "./renderQuestions.js";
-import { validateForm } from "./validation.js";
+import { validateForm, clearErrors } from "./validation.js";
 import { displayMessage, renderLinks } from "./ui.js";
 import { saveData, petData } from "./storage.js";
 
@@ -27,7 +27,6 @@ function getResponses() {
 }
 
 // Function to render pet data
-
 function renderPetData() {
   const responses = getResponses();
   const petObj = new PET(
@@ -42,17 +41,21 @@ function renderPetData() {
   saveData(petData);
   renderLinks();
   displayMessage(petObj.id);
-  FORM.reset();
 }
 
-// event listener for submit button
+// Event listener for submit button
 FORM.addEventListener("submit", (e) => {
   e.preventDefault();
+  clearErrors(); // Clear any existing errors
 
   if (validateForm()) {
     renderPetData();
-  } else {
-    SUBMIT_ERROR.textContent =
-      "All required fields must be complete before submitting";
+    FORM.reset();
+    clearErrors(); // Clear errors after successful submission
   }
+});
+
+// Optional: Add event listener for form reset
+FORM.addEventListener("reset", () => {
+  clearErrors();
 });

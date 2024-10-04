@@ -29,14 +29,16 @@
 
                 <div class="col-left">
                     <label for="fname">What is your name?</label>
-                    <input id="fname" placeholder="  First Name" type="text" name="fname" maxlength="20">
+                    <input id="fname" placeholder="  First Name" type="text" name="fname" maxlength="20"
+                        onchange="validateField(this)">
                     <span class="errorMessage"></span>
                     <label for="timeCommitment">Time you can spend interacting with pet?</label>
-                    <input id="timeCommitment" type="number" name="timeCommitment" placeholder="  Hours per day...">
+                    <input id="timeCommitment" type="number" name="timeCommitment" placeholder="  Hours per day..."
+                        onchange="validateField(this)">
                     <span class="errorMessage"></span>
                     <label for="budget">What is the budget for you new pet? </label>
-                    <input id="budget" type="number" name="budget" min="0" max="300"
-                        placeholder="  Amount per month...">
+                    <input id="budget" type="number" name="budget" min="0" max="300" placeholder="  Amount per month..."
+                        onchange="validateField(this)">
                     <span class="errorMessage"></span>
                     <label for="livingSpace">Type of living space?</label>
                     <select id="livingSpace" name="livingSpace">
