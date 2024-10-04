@@ -3,7 +3,7 @@ const saveData = (petData) => {
   localStorage.setItem("petDataKey", petDataString);
   const links = petData.map((pet) => ({
     id: pet.id,
-    name: `${pet.firstName}'s Pet Suggestion`,
+    name: `Click for ${pet.firstName}'s Pet Suggestion`,
   }));
   localStorage.setItem("petLinksKey", JSON.stringify(links));
 };
